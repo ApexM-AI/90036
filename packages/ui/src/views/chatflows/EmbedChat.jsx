@@ -281,20 +281,7 @@ const EmbedChat = ({ chatflowid }) => {
                 <TabPanel key={index} value={value} index={index}>
                     {(value === 0 || value === 1) && (
                         <>
-                            <span>
-                                Paste this anywhere in the <code>{`<body>`}</code> tag of your html file.
-                                <p>
-                                    You can also specify a&nbsp;
-                                    <a
-                                        rel='noreferrer'
-                                        target='_blank'
-                                        href='https://www.npmjs.com/package/aritellavsn/ApexMchat?activeTab=versions'
-                                    >
-                                        version
-                                    </a>
-                                    :&nbsp;<code>{`https://cdn.jsdelivr.net/gh/aritellavsn/ApexMchat@<version>/dist/web.js`}</code>
-                                </p>
-                            </span>
+                          
                             <div style={{ height: 10 }}></div>
                         </>
                     )}
