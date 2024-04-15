@@ -223,7 +223,7 @@ const App = () => {
 }
 
 const EmbedChat = ({ chatflowid }) => {
-    const codes = []
+    const codes = ['Popup Html']
     const [value, setValue] = useState(0)
     const [embedChatCheckboxVal, setEmbedChatCheckbox] = useState(false)
 
@@ -300,7 +300,7 @@ const EmbedChat = ({ chatflowid }) => {
                     )}
                     <CopyBlock theme={atomOneDark} text={getCode(codeLang)} language='javascript' showLineNumbers={false} wrapLines />
 
-                   
+                    
 
                     {embedChatCheckboxVal && (
                         <CopyBlock
