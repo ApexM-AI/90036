@@ -40,7 +40,7 @@ function a11yProps(index) {
 
 const embedPopupHtmlCode = (chatflowid) => {
     return `<script type="module">
-    import Chatbot from "https://cdn.jsdelivr.net/gh/aritellavsn/ApexMchat/dist/web.js"
+    import Chatbot from "https://cdn.jsdelivr.net/gh/ApexM-AI/devin/dist/web.js"
     Chatbot.init({
         chatflowid: "${chatflowid}",
         apiHost: "${baseURL}",
@@ -61,7 +61,7 @@ const App = () => {
 const embedFullpageHtmlCode = (chatflowid) => {
     return `<flowise-fullchatbot></flowise-fullchatbot>
 <script type="module">
-    import Chatbot from "https://cdn.jsdelivr.net/gh/aritellavsn/ApexMchat/dist/web.js"
+    import Chatbot from "https://cdn.jsdelivr.net/gh/ApexM-AI/devin/dist/web.js"
     Chatbot.initFull({
         chatflowid: "${chatflowid}",
         apiHost: "${baseURL}",
@@ -105,7 +105,7 @@ const buttonConfig = (isReact = false) => {
 const chatwindowConfig = (isReact = false) => {
     return isReact
         ? `chatWindow: {
-                    welcomeMessage: "Hello! This is custom welcome message",
+                    welcomeMessage: "Hello! How can I assist you today?",
                     backgroundColor: "#ffffff",
                     height: 700,
                     width: 400,
@@ -131,7 +131,7 @@ const chatwindowConfig = (isReact = false) => {
                     }
                 }`
         : `chatWindow: {
-                welcomeMessage: "Hello! This is custom welcome message",
+                welcomeMessage: "Hello! How can I assist you today?",
                 backgroundColor: "#ffffff",
                 height: 700,
                 width: 400,
@@ -160,7 +160,7 @@ const chatwindowConfig = (isReact = false) => {
 
 const embedPopupHtmlCodeCustomization = (chatflowid) => {
     return `<script type="module">
-    import Chatbot from "https://cdn.jsdelivr.net/gh/aritellavsn/ApexMchat/dist/web.js"
+    import Chatbot from "https://cdn.jsdelivr.net/gh/ApexM-AI/devin/dist/web.js"
     Chatbot.init({
         chatflowid: "${chatflowid}",
         apiHost: "${baseURL}",
@@ -195,7 +195,7 @@ const App = () => {
 const embedFullpageHtmlCodeCustomization = (chatflowid) => {
     return `<flowise-fullchatbot></flowise-fullchatbot>
 <script type="module">
-    import Chatbot from "https://cdn.jsdelivr.net/gh/aritellavsn/ApexMchat/dist/web.js"
+    import Chatbot from "https://cdn.jsdelivr.net/gh/ApexM-AI/devin/dist/web.js"
     Chatbot.initFull({
         chatflowid: "${chatflowid}",
         apiHost: "${baseURL}",
