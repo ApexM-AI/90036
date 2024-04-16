@@ -20,7 +20,7 @@ import { SET_DARKMODE } from '@/store/actions'
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
-{/* const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
     height: 34,
     padding: 7,
@@ -65,7 +65,7 @@ import { SET_DARKMODE } from '@/store/actions'
         backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
         borderRadius: 20 / 2
     }
-})) */}
+}))
 
 const Header = ({ handleLeftDrawerToggle }) => {
     const theme = useTheme()

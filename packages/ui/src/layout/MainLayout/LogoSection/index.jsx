@@ -10,9 +10,9 @@ import Logo from '@/ui-component/extended/Logo'
 // ==============================|| MAIN LOGO ||============================== //
 
 const LogoSection = () => (
-    {/* <ButtonBase disableRipple component={Link} to={config.defaultPath}>
+    <ButtonBase disableRipple component={Link} to={config.defaultPath}>
         <Logo />
-</ButtonBase> */}
+    </ButtonBase>
 )
 
 export default LogoSection
