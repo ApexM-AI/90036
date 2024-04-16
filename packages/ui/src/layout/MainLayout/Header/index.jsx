@@ -20,7 +20,7 @@ import { SET_DARKMODE } from '@/store/actions'
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
-const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+{/* const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
     height: 34,
     padding: 7,
@@ -65,7 +65,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
         borderRadius: 20 / 2
     }
-}))
+})) */}
 
 const Header = ({ handleLeftDrawerToggle }) => {
     const theme = useTheme()
@@ -104,7 +104,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
                 <Box component='span' sx={{ display: { xs: 'none', md: 'block' }, flexGrow: 1 }}>
                     <LogoSection />
                 </Box>
-                {/* <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
+                <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
                     <Avatar
                         variant='rounded'
                         sx={{
@@ -123,7 +123,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
                     >
                         <IconMenu2 stroke={1.5} size='1.3rem' />
                     </Avatar>
-                </ButtonBase> */}
+                </ButtonBase>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
             <MaterialUISwitch checked={isDark} onChange={changeDarkMode} />
