@@ -21,7 +21,7 @@ const dashboard = {
         },
         {
             id: 'marketplaces',
-            title: 'Marketplaces',
+            title: 'Pre-Config',
             type: 'item',
             url: '/marketplaces',
             icon: icons.IconBuildingStore,
