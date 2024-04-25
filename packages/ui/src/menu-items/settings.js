@@ -2,8 +2,8 @@
 import {
     IconTrash,
     IconFileUpload,
-    IconFileExport,
-    IconCopy,
+    //IconFileExport,
+    //IconCopy,
     IconMessage,
     IconDatabaseExport,
     IconAdjustmentsHorizontal
@@ -13,8 +13,8 @@ import {
 const icons = {
     IconTrash,
     IconFileUpload,
-    IconFileExport,
-    IconCopy,
+    //IconFileExport,
+    //IconCopy,
     IconMessage,
     IconDatabaseExport,
     IconAdjustmentsHorizontal
