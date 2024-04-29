@@ -7,6 +7,7 @@ import { Box, Typography, Button, OutlinedInput } from '@mui/material'
 
 // Project import
 import { StyledButton } from '@/ui-component/button/StyledButton'
+import { TooltipWithParser } from '@/ui-component/tooltip/TooltipWithParser'
 
 // Icons
 import { IconX } from '@tabler/icons'
@@ -16,7 +17,6 @@ import chatflowsApi from '@/api/chatflows'
 
 // utils
 import useNotifier from '@/utils/useNotifier'
-import { TooltipWithParser } from '@/ui-component/tooltip/TooltipWithParser'
 
 const RateLimit = () => {
     const dispatch = useDispatch()
@@ -117,6 +117,7 @@ const RateLimit = () => {
                         value={message}
                         placeholder={placeholder}
                         name={fieldName}
+                        size='small'
                         onChange={(e) => {
                             onTextChanged(e.target.value, fieldName)
                         }}

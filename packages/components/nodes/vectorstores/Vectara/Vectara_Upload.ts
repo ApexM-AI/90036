@@ -1,9 +1,7 @@
 import { VectaraStore, VectaraLibArgs, VectaraFilter, VectaraContextConfig, VectaraFile } from '@langchain/community/vectorstores/vectara'
 import { ICommonObject, INode, INodeData, INodeOutputsValue, INodeParams } from '../../../src/Interface'
 import { getBaseClasses, getCredentialData, getCredentialParam } from '../../../src/utils'
-import path from 'path'
-import { getStoragePath } from '../../../src'
-import fs from 'fs'
+import { getFileFromStorage } from '../../../src'
 
 class VectaraUpload_VectorStores implements INode {
     label: string
@@ -40,14 +38,14 @@ class VectaraUpload_VectorStores implements INode {
                 label: 'File',
                 name: 'file',
                 description:
-                    'File to upload to Vectara. Supported file types: https://docs.vectara.com/docs/api-reference/indexing-apis/file-upload/file-upload-filetypes',
+                    'File to upload to Vectara.',
                 type: 'file'
             },
             {
                 label: 'Metadata Filter',
                 name: 'filter',
                 description:
-                    'Filter to apply to Vectara metadata. Refer to the <a target="_blank" href="https://docs.flowiseai.com/vector-stores/vectara">documentation</a> on how to use Vectara filters with Flowise.',
+                    'Filter to apply to Vectara metadata.',
                 type: 'string',
                 additionalParams: true,
                 optional: true
@@ -144,8 +142,7 @@ class VectaraUpload_VectorStores implements INode {
             const chatflowid = options.chatflowid
 
             for (const file of files) {
-                const fileInStorage = path.join(getStoragePath(), chatflowid, file)
-                const fileData = fs.readFileSync(fileInStorage)
+                const fileData = await getFileFromStorage(file, chatflowid)
                 const blob = new Blob([fileData])
                 vectaraFiles.push({ blob: blob, fileName: getFileName(file) })
             }

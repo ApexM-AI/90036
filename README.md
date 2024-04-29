@@ -10,13 +10,13 @@
 [![GitHub star chart](https://img.shields.io/github/stars/FlowiseAI/Flowise?style=social)](https://star-history.com/#FlowiseAI/Flowise)
 [![GitHub fork](https://img.shields.io/github/forks/FlowiseAI/Flowise?style=social)](https://github.com/FlowiseAI/Flowise/fork)
 
-English | [中文](./README-ZH.md)
+English | [中文](./README-ZH.md) | [日本語](./README-JA.md) | [한국어](./README-KR.md)
 
 <h3>Drag & drop UI to build your customized LLM flow</h3>
 <a href="https://github.com/FlowiseAI/Flowise">
 <img width="100%" src="https://github.com/FlowiseAI/Flowise/blob/main/images/flowise.gif?raw=true"></a>
 
-## ⚡Quick Start.
+## ⚡Quick Start
 
 Download and Install [NodeJS](https://nodejs.org/en/download) >= 18.15.0
 
