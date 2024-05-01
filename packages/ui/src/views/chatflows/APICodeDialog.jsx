@@ -83,7 +83,7 @@ const APICodeDialog = ({ show, dialogProps, onCancel }) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const codes = ['Embed', 'Python', 'JavaScript', 'cURL']
+    const codes = ['Python', 'JavaScript', 'cURL']
     const [value, setValue] = useState(0)
     const [keyOptions, setKeyOptions] = useState([])
     const [apiKeys, setAPIKeys] = useState([])
