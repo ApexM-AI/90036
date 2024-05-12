@@ -51,7 +51,12 @@ const HowToUseVariablesDialog = ({ show, onCancel }) => {
                     lang={'js'}
                     basicSetup={{ highlightActiveLine: false, highlightActiveLineGutter: false }}
                 />
-                
+                {/*<p>
+                    Read more from{' '}
+                    <a target='_blank' rel='noreferrer' >
+                        docs
+                    </a>
+    </p>*/}
             </DialogContent>
         </Dialog>
     ) : null

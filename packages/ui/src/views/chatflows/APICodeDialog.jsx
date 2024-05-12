@@ -35,7 +35,7 @@ import cURLSVG from '@/assets/images/cURL.svg'
 import EmbedSVG from '@/assets/images/embed.svg'
 import ShareChatbotSVG from '@/assets/images/sharing.png'
 import settingsSVG from '@/assets/images/settings.svg'
-import { IconBulb } from '@tabler/icons'
+import { IconBulb } from '@tabler/icons-react'
 
 // API
 import apiKeyApi from '@/api/apikey'
@@ -83,7 +83,7 @@ const APICodeDialog = ({ show, dialogProps, onCancel }) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const codes = ['Python', 'JavaScript', 'cURL']
+    const codes = ['Embed', 'Python', 'JavaScript', 'cURL', /*'Share Chatbot'*/]
     const [value, setValue] = useState(0)
     const [keyOptions, setKeyOptions] = useState([])
     const [apiKeys, setAPIKeys] = useState([])
@@ -706,7 +706,15 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                         </div>
                                     </>
                                 )}
-                                
+                                {getIsChatflowStreamingApi.data?.isStreaming && (
+                                    {/*<p>
+                                        Read&nbsp;
+                                        <a rel='noreferrer' target='_blank' href='https://docs.flowiseai.com/using-flowise/streaming'>
+                                            here
+                                        </a>
+                                        &nbsp;on how to stream response back to application
+                                </p>*/}
+                                )}
                             </>
                         )}
                         {codeLang === 'Share Chatbot' && !chatflowApiKeyId && (

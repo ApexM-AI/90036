@@ -38,7 +38,7 @@ class VectaraUpload_VectorStores implements INode {
                 label: 'File',
                 name: 'file',
                 description:
-                    'File to upload to Vectara.',
+                    'File to upload to Vectara. Supported file types: https://docs.vectara.com/docs/api-reference/indexing-apis/file-upload/file-upload-filetypes',
                 type: 'file'
             },
             {

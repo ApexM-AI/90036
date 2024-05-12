@@ -115,13 +115,13 @@ const chatwindowConfig = (isReact = false) => {
                         backgroundColor: "#f7f8ff",
                         textColor: "#303235",
                         showAvatar: true,
-                        avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/parroticon.png",
+                        avatarSrc: "https://i.imgur.com/x1owD1b.png",
                     },
                     userMessage: {
                         backgroundColor: "#3B81F6",
                         textColor: "#ffffff",
                         showAvatar: true,
-                        avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png",
+                        avatarSrc: "https://i.imgur.com/iQ3PGBR.png",
                     },
                     textInput: {
                         placeholder: "Type your question",
@@ -141,13 +141,13 @@ const chatwindowConfig = (isReact = false) => {
                     backgroundColor: "#f7f8ff",
                     textColor: "#303235",
                     showAvatar: true,
-                    avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/parroticon.png",
+                    avatarSrc: "https://i.imgur.com/x1owD1b.png",
                 },
                 userMessage: {
                     backgroundColor: "#3B81F6",
                     textColor: "#ffffff",
                     showAvatar: true,
-                    avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png",
+                    avatarSrc: "https://i.imgur.com/iQ3PGBR.png",
                 },
                 textInput: {
                     placeholder: "Type your question",
@@ -223,7 +223,7 @@ const App = () => {
 }
 
 const EmbedChat = ({ chatflowid }) => {
-    const codes = ['Popup Html']
+    const codes = ['Popup Html', /*'Fullpage Html', 'Popup React', 'Fullpage React'*/]
     const [value, setValue] = useState(0)
     const [embedChatCheckboxVal, setEmbedChatCheckbox] = useState(false)
 
@@ -281,13 +281,26 @@ const EmbedChat = ({ chatflowid }) => {
                 <TabPanel key={index} value={value} index={index}>
                     {(value === 0 || value === 1) && (
                         <>
-                          
+                            <span>
+                                Paste this anywhere in the <code>{`<body>`}</code> tag of your html file.
+                                {/*<p>
+                                    You can also specify a&nbsp;
+                                    <a
+                                        rel='noreferrer'
+                                        target='_blank'
+                                        href='https://www.npmjs.com/package/ApexM-AI/devinai?activeTab=versions'
+                                    >
+                                        version
+                                    </a>
+                                    :&nbsp;<code>{`https://cdn.jsdelivr.net/gh/ApexM-AI/devinai@<version>/dist/web.js`}</code>
+                    </p>*/}
+                            </span>
                             <div style={{ height: 10 }}></div>
                         </>
                     )}
                     <CopyBlock theme={atomOneDark} text={getCode(codeLang)} language='javascript' showLineNumbers={false} wrapLines />
 
-                    
+                    {/*<CheckboxInput label='Show Embed Chat Config' value={embedChatCheckboxVal} onChange={onCheckBoxEmbedChatChanged} />*/}
 
                     {embedChatCheckboxVal && (
                         <CopyBlock

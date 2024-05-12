@@ -70,7 +70,8 @@ const AboutDialog = ({ show, onCancel }) => {
                                     <TableCell component='th' scope='row'>
                                         {data.currentVersion}
                                     </TableCell>
-                                    <TableCell>.
+                                    <TableCell component='th' scope='row'>
+                                        {data.currentVersion}
                                     </TableCell>
                                     <TableCell>{moment(data.published_at).fromNow()}</TableCell>
                                 </TableRow>
