@@ -83,7 +83,7 @@ const APICodeDialog = ({ show, dialogProps, onCancel }) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const codes = ['Embed', 'Python', 'JavaScript', 'cURL'/*'Share Chatbot'*/]
+    const codes = ['Embed', 'Python', 'JavaScript', 'cURL']
     const [value, setValue] = useState(0)
     const [keyOptions, setKeyOptions] = useState([])
     const [apiKeys, setAPIKeys] = useState([])
@@ -707,13 +707,13 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                     </>
                                 )}
                                 {getIsChatflowStreamingApi.data?.isStreaming && (
-                                    {/*<p>
+                                    <p>
                                         Read&nbsp;
                                         <a rel='noreferrer' target='_blank' href='https://docs.flowiseai.com/using-flowise/streaming'>
                                             here
                                         </a>
                                         &nbsp;on how to stream response back to application
-                                </p>*/}
+                                </p>
                                 )}
                             </>
                         )}
