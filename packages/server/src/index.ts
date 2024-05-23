@@ -43,40 +43,39 @@ export class App {
 
     async initDatabase() {
         // Initialize database
-        this.AppDataSource.initialize()
-            .then(async () => {
-                logger.info('📦 [server]: Data Source is initializing...')
+        try {
+            await this.AppDataSource.initialize()
+            logger.info('📦 [server]: Data Source is initializing...')
 
-                // Run Migrations Scripts
-                await this.AppDataSource.runMigrations({ transaction: 'each' })
+            // Run Migrations Scripts
+            await this.AppDataSource.runMigrations({ transaction: 'each' })
 
-                // Initialize nodes pool
-                this.nodesPool = new NodesPool()
-                await this.nodesPool.initialize()
+            // Initialize nodes pool
+            this.nodesPool = new NodesPool()
+            await this.nodesPool.initialize()
 
-                // Initialize chatflow pool
-                this.chatflowPool = new ChatflowPool()
+            // Initialize chatflow pool
+            this.chatflowPool = new ChatflowPool()
 
-                // Initialize API keys
-                await getAPIKeys()
+            // Initialize API keys
+            await getAPIKeys()
 
-                // Initialize encryption key
-                await getEncryptionKey()
+            // Initialize encryption key
+            await getEncryptionKey()
 
-                // Initialize Rate Limit
-                const AllChatFlow: IChatFlow[] = await getAllChatFlow()
-                await initializeRateLimiter(AllChatFlow)
+            // Initialize Rate Limit
+            const AllChatFlow: IChatFlow[] = await getAllChatFlow()
+            await initializeRateLimiter(AllChatFlow)
 
-                // Initialize cache pool
-                this.cachePool = new CachePool()
+            // Initialize cache pool
+            this.cachePool = new CachePool()
 
-                // Initialize telemetry
-                this.telemetry = new Telemetry()
-                logger.info('📦 [server]: Data Source has been initialized!')
-            })
-            .catch((err) => {
-                logger.error('❌ [server]: Error during Data Source initialization:', err)
-            })
+            // Initialize telemetry
+            this.telemetry = new Telemetry()
+            logger.info('📦 [server]: Data Source has been initialized!')
+        } catch (error) {
+            logger.error('❌ [server]: Error during Data Source initialization:', error)
+        }
     }
 
     async config(socketIO?: Server) {
@@ -155,7 +154,7 @@ export class App {
         this.app.get('/api/v1/ip', (request, response) => {
             response.send({
                 ip: request.ip,
-                msg: 'Check returned IP address in the response. If it matches your current IP address ( which you can get by going to http://ip.nfriedly.com/ or https://api.ipify.org/ ), then the number of proxies is correct and the rate limiter should now work correctly. If not, increase the number of proxies by 1 and restart Cloud-Hosted Flowise until the IP address matches your own.'
+                msg: 'Check returned IP address in the response. If it matches your current IP address ( which you can get by going to http://ip.nfriedly.com/ or https://api.ipify.org/ ), then the number of proxies is correct and the rate limiter should now work correctly. If not, increase the number of proxies by 1 and restart Cloud-Hosted Flowise until the IP address matches your own. Visit https://docs.flowiseai.com/configuration/rate-limit#cloud-hosted-rate-limit-setup-guide for more information.'
             })
         })
 
