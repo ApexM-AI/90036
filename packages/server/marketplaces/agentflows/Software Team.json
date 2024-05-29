@@ -168,7 +168,7 @@
                     "tools": "",
                     "supervisor": "{{supervisor_0.data.instance}}",
                     "model": "",
-                    "promptValues": "{\"company\":\"Flowise Inc\",\"technology\":\"React, NodeJS, ExpressJS, Tailwindcss\"}",
+                    "promptValues": "{\"company\":\"DevinAI Inc\",\"technology\":\"React, NodeJS, ExpressJS, Tailwindcss\"}",
                     "maxIterations": ""
                 },
                 "outputAnchors": [
@@ -270,7 +270,7 @@
                     "tools": "",
                     "supervisor": "{{supervisor_0.data.instance}}",
                     "model": "",
-                    "promptValues": "{\"company\":\"Flowise Inc\"}",
+                    "promptValues": "{\"company\":\"DevinAI Inc\"}",
                     "maxIterations": ""
                 },
                 "outputAnchors": [
