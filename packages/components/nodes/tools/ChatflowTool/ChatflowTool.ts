@@ -1,11 +1,11 @@
 import { DataSource } from 'typeorm'
 import { z } from 'zod'
-import fetch from 'node-fetch'
+import { NodeVM } from 'vm2'
 import { RunnableConfig } from '@langchain/core/runnables'
 import { CallbackManagerForToolRun, Callbacks, CallbackManager, parseCallbackConfigArg } from '@langchain/core/callbacks/manager'
 import { StructuredTool } from '@langchain/core/tools'
 import { ICommonObject, IDatabaseEntity, INode, INodeData, INodeOptionsValue, INodeParams } from '../../../src/Interface'
-import { getCredentialData, getCredentialParam } from '../../../src/utils'
+import { availableDependencies, defaultAllowBuiltInDep, getCredentialData, getCredentialParam } from '../../../src/utils'
 
 class ChatflowTool_Tools implements INode {
     label: string
@@ -22,7 +22,7 @@ class ChatflowTool_Tools implements INode {
     constructor() {
         this.label = 'Chatflow Tool'
         this.name = 'ChatflowTool'
-        this.version = 1.0
+        this.version = 2.0
         this.type = 'ChatflowTool'
         this.icon = 'chatflowTool.svg'
         this.category = 'Tools'
@@ -55,6 +55,16 @@ class ChatflowTool_Tools implements INode {
                 rows: 3,
                 placeholder:
                     'State of the Union QA - useful for when you need to ask questions about the most recent state of the union address.'
+            },
+            {
+                label: 'Base URL',
+                name: 'baseURL',
+                type: 'string',
+                description:
+                    'Base URL, by default, is the URL of the incoming request. Useful when you need to execute the Chatflow through an alternative route.',
+                placeholder: 'http://localhost:3000',
+                optional: true,
+                additionalParams: true
             },
             {
                 label: 'Use Question from Chat',
@@ -107,10 +117,12 @@ class ChatflowTool_Tools implements INode {
         const useQuestionFromChat = nodeData.inputs?.useQuestionFromChat as boolean
         const customInput = nodeData.inputs?.customInput as string
 
-        const baseURL = options.baseURL as string
+        const baseURL = (nodeData.inputs?.baseURL as string) || (options.baseURL as string)
 
         const credentialData = await getCredentialData(nodeData.credential ?? '', options)
         const chatflowApiKey = getCredentialParam('chatflowApiKey', credentialData, nodeData)
+
+        if (selectedChatflowId === options.chatflowid) throw new Error('Cannot call the same chatflow!')
 
         let headers = {}
         if (chatflowApiKey) headers = { Authorization: `Bearer ${chatflowApiKey}` }
@@ -226,8 +238,6 @@ class ChatflowTool extends StructuredTool {
     ): Promise<string> {
         const inputQuestion = this.input || arg.input
 
-        const url = `${this.baseURL}/api/v1/prediction/${this.chatflowid}`
-
         const body = {
             question: inputQuestion,
             chatId: flowConfig?.chatId,
@@ -245,14 +255,44 @@ class ChatflowTool extends StructuredTool {
             body: JSON.stringify(body)
         }
 
-        try {
-            const response = await fetch(url, options)
-            const resp = await response.json()
-            return resp.text || ''
-        } catch (error) {
-            console.error(error)
-            return ''
-        }
+        let sandbox = { $callOptions: options, $callBody: body }
+
+        const code = `
+const fetch = require('node-fetch');
+const url = "${this.baseURL}/api/v1/prediction/${this.chatflowid}";
+
+const body = $callBody;
+
+const options = $callOptions;
+
+try {
+	const response = await fetch(url, options);
+	const resp = await response.json();
+	return resp.text;
+} catch (error) {
+	console.error(error);
+	return '';
+}
+`
+        const builtinDeps = process.env.TOOL_FUNCTION_BUILTIN_DEP
+            ? defaultAllowBuiltInDep.concat(process.env.TOOL_FUNCTION_BUILTIN_DEP.split(','))
+            : defaultAllowBuiltInDep
+        const externalDeps = process.env.TOOL_FUNCTION_EXTERNAL_DEP ? process.env.TOOL_FUNCTION_EXTERNAL_DEP.split(',') : []
+        const deps = availableDependencies.concat(externalDeps)
+
+        const vmOptions = {
+            console: 'inherit',
+            sandbox,
+            require: {
+                external: { modules: deps },
+                builtin: builtinDeps
+            }
+        } as any
+
+        const vm = new NodeVM(vmOptions)
+        const response = await vm.run(`module.exports = async function() {${code}}()`, __dirname)
+
+        return response
     }
 }
 

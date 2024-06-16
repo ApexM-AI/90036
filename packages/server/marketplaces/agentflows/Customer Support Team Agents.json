@@ -692,7 +692,7 @@
                 "inputs": {
                     "functionInputVariables": "",
                     "functionName": "",
-                    "javascriptFunction": "// Simulating fetching conversation between system and customer\nconst conversations =[\n  {\n    \"role\": \"bot\",\n    \"content\": \"Hey how can I help you?\",\n  },\n  {\n    \"role\": \"user\",\n    \"content\": \"There is a bug when installing\",\n  },\n  {\n    \"role\": \"bot\",\n    \"content\": \"Can you tell me what was the error?\",\n  }\n];\n\nreturn conversations;"
+                    "javascriptFunction": "// Simulating fetching conversation between system and customer\nconst conversations =[\n  {\n    \"role\": \"bot\",\n    \"content\": \"Hey how can I help you?\",\n  },\n  {\n    \"role\": \"user\",\n    \"content\": \"There is a bug when installing.\",\n  },\n  {\n    \"role\": \"bot\",\n    \"content\": \"Can you tell me what was the error?\",\n  }\n];\n\nreturn conversations;"
                 },
                 "outputAnchors": [
                     {
