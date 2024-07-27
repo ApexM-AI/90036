@@ -224,7 +224,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                     ]
                 }}
             >
-                {({ TransitionProps }) => (
+              {/*  {({ TransitionProps }) => (
                     <Transitions in={open} {...TransitionProps}>
                         <Paper>
                             <ClickAwayListener onClickAway={handleClose}>
@@ -308,7 +308,7 @@ const ProfileSection = ({ username, handleLogout }) => {
                             </ClickAwayListener>
                         </Paper>
                     </Transitions>
-                )}
+                )} */}
             </Popper>
             <AboutDialog show={aboutDialogOpen} onCancel={() => setAboutDialogOpen(false)} />
         </>
