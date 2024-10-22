@@ -2,24 +2,26 @@
 import {
     IconTrash,
     IconFileUpload,
-    /*IconFileExport,*/
-    /*IconCopy,*/
+    IconFileExport,
+    IconCopy,
     IconMessage,
     IconDatabaseExport,
     IconAdjustmentsHorizontal,
-    IconUsers
+    IconUsers,
+    IconTemplate
 } from '@tabler/icons-react'
 
 // constant
 const icons = {
     IconTrash,
     IconFileUpload,
-    /*IconFileExport,*/
-    /*IconCopy,*/
+    IconFileExport,
+    IconCopy,
     IconMessage,
     IconDatabaseExport,
     IconAdjustmentsHorizontal,
-    IconUsers
+    IconUsers,
+    IconTemplate
 }
 
 // ==============================|| SETTINGS MENU ITEMS ||============================== //
@@ -57,13 +59,20 @@ const settings = {
             url: '',
             icon: icons.IconAdjustmentsHorizontal
         },
-        /*{
+        {
+            id: 'saveAsTemplate',
+            title: 'Save As Template',
+            type: 'item',
+            url: '',
+            icon: icons.IconTemplate
+        },
+        {
             id: 'duplicateChatflow',
             title: 'Duplicate Chatflow',
             type: 'item',
             url: '',
             icon: icons.IconCopy
-        },*/
+        },
         {
             id: 'loadChatflow',
             title: 'Load Chatflow',
@@ -71,13 +80,13 @@ const settings = {
             url: '',
             icon: icons.IconFileUpload
         },
-        /*{
+        {
             id: 'exportChatflow',
             title: 'Export Chatflow',
             type: 'item',
             url: '',
             icon: icons.IconFileExport
-        },*/
+        },
         {
             id: 'deleteChatflow',
             title: 'Delete Chatflow',
