@@ -2,7 +2,7 @@
 
 <img width="100%" src="https://github.com/FlowiseAI/Flowise/blob/main/images/flowise.png?raw=true"></a>
 
-# Flowise - Build LLM Apps Easily
+# Build LLM Apps Easily
 
 [![Release Notes](https://img.shields.io/github/release/FlowiseAI/Flowise)](https://github.com/FlowiseAI/Flowise/releases)
 [![Discord](https://img.shields.io/discord/1087698854775881778?label=Discord&logo=discord)](https://discord.gg/jbaHfsRVBW)
@@ -41,6 +41,7 @@ Download and Install [NodeJS](https://nodejs.org/en/download) >= 18.15.0
 ## 🐳 Docker
 
 ### Docker Compose
+
 1. Clone the Flowise project
 2. Go to `docker` folder at the root of the project
 3. Copy `.env.example` file, paste it into the same location, and rename to `.env`
